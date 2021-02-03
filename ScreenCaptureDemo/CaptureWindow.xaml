@@ -1,0 +1,52 @@
+﻿<Window x:Class="ScreenCaptureDemo.CaptureWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScreenCaptureDemo"
+        mc:Ignorable="d" x:Name="uc"
+         Title="CaptureWindow" Height="450" Width="800" Background="Transparent" WindowStyle="None" ResizeMode="NoResize"  Topmost="True" AllowsTransparency="True">
+    <!-- 新建一个资源 "I_AM_RES" -->
+    <Window.Resources>
+        <RoutedUICommand x:Key="StopCapture"/>
+    </Window.Resources>
+
+    <!-- 新建一个按键绑定-->
+    <!-->Modifiers 设置 Control，Alt 这样的标识键<-->
+    <!-->Key 设置 A，B，C ···<-->
+    <Window.InputBindings>
+        <KeyBinding  Key="Esc" Command="{StaticResource StopCapture}"  />
+    </Window.InputBindings>
+
+    <!-->将刚刚建的资源绑定事件，事件名叫KeyClick（等等还得去把这个事件给写了）<-->
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource StopCapture}" Executed="Esc_Click"/>
+    </Window.CommandBindings>
+
+    <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown" MouseMove="Grid_MouseMove" MouseUp="Grid_MouseUp" Background="Transparent">
+        <Grid x:Name="backGrig" >
+            <Image x:Name="back"/>
+            <Rectangle Fill="#99000000"  />
+        </Grid>
+        <Rectangle Fill="Transparent" Stroke="Green" StrokeThickness="1"/>
+        <!--<Canvas>-->
+        <Grid x:Name="selectRange" ClipToBounds="True" HorizontalAlignment="Left" Margin="136,111,0,0" VerticalAlignment="Top"  Height="0" Width="0" >
+            <Image x:Name="origin"/>
+            <!--<Grid x:Name="font"/>-->
+            <Rectangle Fill="Transparent" Stroke="Green" StrokeThickness="1"/>
+        </Grid>
+        <Popup x:Name="mypop" IsOpen="False"  Placement="Mouse"  PlacementTarget="{Binding ElementName=selectRange}">
+            <Grid Width="250" Height="30">
+                <Button  Content="确定" Click="Confirm_Click"/>
+            </Grid>
+        </Popup>
+
+        <Popup x:Name="minView"  IsOpen="{Binding IsOpenBigView,ElementName=uc}" AllowsTransparency="True"  StaysOpen="True" Placement="Mouse" >
+            <local:MagnifierUserControl x:Name="bigView"/>
+        </Popup>
+
+
+
+        <!--</Canvas>-->
+    </Grid>
+</Window>

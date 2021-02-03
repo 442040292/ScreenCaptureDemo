@@ -1,0 +1,18 @@
+﻿<Window x:Class="ScreenCaptureDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScreenCaptureDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Button  Content="开始截屏" Click="Capture_Click" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <Image x:Name="captureImage" Grid.Row="1"/>
+        <Rectangle  Grid.Row="1" Stroke="Green" StrokeThickness="1" Width="{Binding ActualWidth,ElementName=captureImage}" Height="{Binding ActualHeight,ElementName=captureImage}" />
+    </Grid>
+</Window>
