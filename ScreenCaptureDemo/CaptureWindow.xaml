@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScreenCaptureDemo"
         mc:Ignorable="d" x:Name="uc"
-         Title="CaptureWindow" Height="450" Width="800" Background="Transparent" WindowStyle="None" ResizeMode="NoResize"  Topmost="True" AllowsTransparency="True">
+        Title="CaptureWindow" Height="450" Width="800" Background="Transparent" WindowStyle="None" ResizeMode="NoResize"  Topmost="True" AllowsTransparency="True">
     <!-- 新建一个资源 "I_AM_RES" -->
     <Window.Resources>
         <RoutedUICommand x:Key="StopCapture"/>

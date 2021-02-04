@@ -26,24 +26,32 @@ namespace ScreenCaptureDemo
         }
 
         System.Drawing.Bitmap bitmap;
-
+        ImageSource bacImage;
 
         public void SetBackImage(System.Drawing.Bitmap bitmapA)
         {
-            back.Source = ImageHelper.ChangeBitmapToImageSource(bitmapA);
+            bacImage = ImageHelper.ChangeBitmapToImageSource(bitmapA);
             bitmap = bitmapA;
+            back.Source = bacImage;
         }
 
         public void ChangeLoacation(System.Drawing.Point point)
         {
-            if (point.X <= 40 || point.Y <= 40 || (bitmap.Width - point.X) <= 40 || (bitmap.Height - point.Y) <= 40)
+            int size = 10;
+            int rate = 160 / size;
+            if (point.X <= size || point.Y <= size || (bitmap.Width - point.X) <= size || (bitmap.Height - point.Y) <= size)
             {
                 back.Source = null;
             }
             else
             {
-                var showImage = ScreenCapture.DrawCaptureImage(bitmap, new System.Drawing.Rectangle((int)(point.X - 40), (int)(point.Y - 20), 80, 40));
-                back.Source = ImageHelper.ChangeBitmapToImageSource(showImage);
+                back.Margin = new Thickness((-point.X - size) * rate, (-point.Y - size) * rate, 0, 0);
+                back.Width = bitmap.Width * rate;
+                back.Height = bitmap.Height * rate;
+                back.Source = bacImage;
+
+                //var showImage = ScreenCapture.DrawCaptureImage(bitmap, new System.Drawing.Rectangle((int)(point.X - size), (int)(point.Y - size), size, size));
+                //back.Source = ImageHelper.ChangeBitmapToImageSource(showImage);
             }
         }
     }

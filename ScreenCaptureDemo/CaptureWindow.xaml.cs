@@ -22,7 +22,6 @@ namespace ScreenCaptureDemo
         public CaptureWindow()
         {
             InitializeComponent();
-
             Load();
         }
 
@@ -38,10 +37,7 @@ namespace ScreenCaptureDemo
             bitmap = Helper.GetFullScreen();
             origin.Source = back.Source = ImageHelper.ChangeBitmapToImageSource(bitmap);
             bigView.SetBackImage(bitmap);
-
         }
-
-
 
 
         public bool IsOpenBigView

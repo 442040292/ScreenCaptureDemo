@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ScreenCaptureDemo"
              mc:Ignorable="d" 
-             d:DesignHeight="160" d:DesignWidth="160" Width="160" Height="160">
+             d:DesignHeight="240" d:DesignWidth="160" Width="160" Height="240">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="160"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Image  x:Name="back"/>
+        <Image  x:Name="back" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Rectangle x:Name="border" Stroke="White" StrokeThickness="2"/>
         <Line  X1="0" X2="{Binding ActualWidth,ElementName=border}" Y1="0" Y2="0" Stroke="#99008000" StrokeThickness="2" VerticalAlignment="Center"/>
         <Line  X1="0" X2="0" Y1="0" Y2="{Binding ActualHeight,ElementName=border}" Stroke="#99008000" StrokeThickness="2" HorizontalAlignment="Center"/>
